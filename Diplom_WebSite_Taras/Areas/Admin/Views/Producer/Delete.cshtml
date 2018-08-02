@@ -1,0 +1,40 @@
+﻿@model Diplom_WebSite_Taras.DAL.Entities.Producer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Видалення виробника</h2>
+
+<h3>Чи Ви дійсно бажаєте видалити даного виробника?</h3>
+<div>
+    @*<h4>Producer</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Published)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Published)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Видалити" class="btn btn-danger" /> |
+            @Html.ActionLink("Повернутися", "Index")
+        </div>
+    }
+</div>

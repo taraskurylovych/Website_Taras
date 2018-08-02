@@ -1,0 +1,81 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Diplom_WebSite_Taras.Areas.Admin.Models.ProductItemViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Продукти</h2>
+
+<p>
+    @Html.ActionLink("Створити новий продукт", "Create", null, new { @class = "btn btn-success btn-large" })
+</p>
+@*<p>
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    {
+        <b>Пошук: </b> @Html.RadioButton("searchBy", "Name", true) <text>Продукти</text>
+        <b>Пошук: </b> @Html.RadioButton("searchBy", "CategoryName") <text>Категорії</text>
+    <b>Пошук: </b> @Html.RadioButton("searchBy", "ProducerName") <text>Виробники</text> <br />
+    @Html.TextBox("search") <input type="submit" value="Шукати" />
+    }
+
+
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ProducerName)
+        </th>
+        <th></th>
+    </tr>
+      
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProducerName)
+        </td>
+        <td>
+            @Html.ActionLink("Змінити", "Edit", new { id=item.Id }, new { @class = "btn btn-success btn-large" }) 
+            @Html.ActionLink("Детально", "Details", new { id=item.Id }, new { @class = "btn btn-info btn-large" }) 
+            @Html.ActionLink("Видалити", "Delete", new { id=item.Id }, new { @class = "btn btn-warning btn-large" })
+        </td>
+    </tr>
+    }
+    
+</table>
+
+Сторінка @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

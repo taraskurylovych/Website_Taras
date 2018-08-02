@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<Diplom_WebSite_Taras.Models.ExpandedUserDTO>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<p>
+    @Html.ActionLink("Створити нового користувача", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Керування ролями", "ViewAllRoles", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Повернутися", "../", "Home", null, new { @class = "btn btn-success" })
+</p>
+<br />
+@using (Html.BeginForm("Index", "AdminUserRole", FormMethod.Get))
+{
+
+    <div class="form-group">
+        Пошук:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
+
+        <input type="submit" value="Знайти" />
+    </div>
+}
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Email, або ім'я
+        </th>       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>*@
+            <td>
+                @Html.ActionLink("Змінити", "EditUser", new { UserName = item.UserName }, new { @class = "btn btn-success btn-large" }) |
+                @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                {
+                    @Html.ActionLink("Видалити", "DeleteUser", new { UserName = item.UserName },
+                    new { onclick = "return confirm('Чи Ви дійсно бажаєте видалити даного користувача?');" })
+                }
+            </td>
+        </tr>
+    }
+
+
+</table>
+<br />
+Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
+
+@Html.PagedListPager(Model,
+    page => Url.Action("Index",
+    new
+    {
+        page,
+        searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
+        currentFilter = ViewBag.CurrentFilter
+    }))
+<hr />

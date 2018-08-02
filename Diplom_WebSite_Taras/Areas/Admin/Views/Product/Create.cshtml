@@ -1,0 +1,125 @@
+﻿@model Diplom_WebSite_Taras.Areas.Admin.Models.ProductCreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Створення нового продукту</h2>
+
+@*@section styles
+    {
+        <link href="~/Content/cropper/cropper.min.css" rel="stylesheet" />        
+        <link href="~/Content/cropper/main.css" rel="stylesheet" />
+        <link href="~/Content/font-awesome.css" rel="stylesheet" />        
+        <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+        <a href="~/fonts/fontawesome-webfont.eot"></a>
+        <a href="~/fonts/fontawesome-webfont.ttf"></a>
+        <a href="~/fonts/fontawesome-webfont.woff"></a>
+        <a href="~/fonts/FontAwesome.otf"></a>
+        <img src="~/fonts/fontawesome-webfont.svg" />
+        <a href="~/fonts/fontawesome-webfont.woff2"></a>
+    }*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.ImageBase64)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.SelectListCategories, "Id", "Name"), new { @class = "form-control" });
+                
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProducerId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProducerId, new SelectList(Model.SelectListProducers, "Id", "Name"), new { @class = "form-control" });
+                @Html.ValidationMessageFor(model => model.ProducerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+               
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageBase64, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" class="myUploadFile" name="img_file" id="img_file">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Створити" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+@Html.Partial("_ImageCropper")
+
+<div>
+    @Html.ActionLink("Повернутися", "Index")
+</div>
+
+@section styles
+    {
+    <link href="~/Content/cropper/cropper.min.css" rel="stylesheet" />
+    <link href="~/Content/cropper/main.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <a href="~/fonts/fontawesome-webfont.eot"></a>
+    <a href="~/fonts/fontawesome-webfont.ttf"></a>
+    <a href="~/fonts/fontawesome-webfont.woff"></a>
+    <a href="~/fonts/FontAwesome.otf"></a>
+    <img src="~/fonts/fontawesome-webfont.svg" />
+    <a href="~/fonts/fontawesome-webfont.woff2"></a>
+}
+
+@section scripts
+{
+<script src="~/Scripts/cropper/cropper.min.js"></script>
+<script src="~/Scripts/cropper/scripts.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+        // nultiple initialize
+        $('.myUploadFile').filestyle({
+            buttonText: 'Обрати фото',
+            buttonName: 'btn-primary'
+        });
+</script>
+}
