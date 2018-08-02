@@ -18,7 +18,7 @@ namespace Diplom_WebSite_Taras.DAL.Entities
         public int ProductId { get; set; }
         public double Count { get; set; }
 
-        //[Column(TypeName = "datetime2")]
+        
         public DateTime DateCreated { get; set; }
 
         public virtual Product Product { get; set; }
