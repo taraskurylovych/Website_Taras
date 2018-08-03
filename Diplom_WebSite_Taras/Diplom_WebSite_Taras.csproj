@@ -188,8 +188,12 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Entities\Cart.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
+    <Compile Include="DAL\Entities\Customer.cs" />
+    <Compile Include="DAL\Entities\CustomerOrder.cs" />
+    <Compile Include="DAL\Entities\OrderedProduct.cs" />
     <Compile Include="DAL\Entities\Producer.cs" />
     <Compile Include="DAL\Entities\Product.cs" />
+    <Compile Include="DAL\Entities\ShoppingCart.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +208,10 @@
     <Compile Include="Migrations\201807061520041_Create Controllers.cs" />
     <Compile Include="Migrations\201807061520041_Create Controllers.Designer.cs">
       <DependentUpon>201807061520041_Create Controllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031839538_Add cart and orders.cs" />
+    <Compile Include="Migrations\201808031839538_Add cart and orders.Designer.cs">
+      <DependentUpon>201808031839538_Add cart and orders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -417,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807061520041_Create Controllers.resx">
       <DependentUpon>201807061520041_Create Controllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031839538_Add cart and orders.resx">
+      <DependentUpon>201808031839538_Add cart and orders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
