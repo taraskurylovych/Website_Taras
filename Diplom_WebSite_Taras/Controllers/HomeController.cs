@@ -61,14 +61,35 @@ namespace Diplom_WebSite_Taras.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Про нас і нашу ідею.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Наші контакти:";
+
+            return View();
+        }
+
+        public ActionResult FreeDelivery500()
+        {
+            ViewBag.Message = "Безкоштовна доставка по Україні від 500грн.";
+
+            return View();
+        }
+
+        public ActionResult Warranty()
+        {
+            ViewBag.Message = "2 роки повноцінної гарантії на усі матраси";
+
+            return View();
+        }
+
+        public ActionResult Oplata()
+        {
+            ViewBag.Message = "Оплати товар частинами";
 
             return View();
         }

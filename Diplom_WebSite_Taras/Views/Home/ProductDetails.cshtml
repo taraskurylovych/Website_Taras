@@ -200,19 +200,21 @@
                             <!--/product-information-->
                             <img src="/images/product-details/new.jpg" class="newarrival" alt="" />
                             <h2>@Html.DisplayFor(model => model.Name)</h2>
-                            <p>Web ID: @Html.DisplayFor(model => model.Id)</p>
-                            <img src="/images/product-details/rating.png" alt="" />
+                            <p>Код продукту (ID): @Html.DisplayFor(model => model.Id)</p>
+                            @*<img src="/images/product-details/rating.png" alt="" />*@
                             <span>
                                 <span>@Html.DisplayFor(model => model.Price) грн.</span>
                                 <label>Кількість:</label>
-                                <input type="text" value="3" />
+                                <input type="text" value=@Html.DisplayFor(model => model.Quantity) />
                                 <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Купити
+                                    <i class="fa fa-shopping-cart">@Html.ActionLink("Buy", "AddToCart",
+                                                "ShoppingCart", new { id = Model.Id }, "")</i>
+                                    @*@Html.ActionLink("Купити", "AddToCart",
+                                                "ShoppingCart", new { id = Model.Id }, "")*@
                                 </button>
                             </span>
                             <p><b>Наявність:</b> В наявності</p>
-                            <p><b>Стан:</b> Новий</p>
+                            @*<p><b>Стан:</b> Новий</p>*@
                             <p><b>Виробник:</b> @Html.DisplayFor(model => model.ProducerName)</p>
                             <p><b>Опис товару:</b> @Html.DisplayFor(model => model.Description)</p>
                             <a href=""><img src="/images/product-details/share.png" class="share img-responsive" alt="" /></a>
@@ -512,6 +514,6 @@
 
 
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Змінити замовлення", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Повернутися", "Index")
         </p>

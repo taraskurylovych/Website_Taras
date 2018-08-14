@@ -128,7 +128,8 @@
                                     </ul>
                                 </li>
                                 <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Контакти</a></li>
+                                <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("Про нас", "About", "Home")</li>
                             </ul>
                         </div>
                     </div>
@@ -222,7 +223,7 @@
                                 <div class="col-sm-3">
                                     <div class="address">
                                         <img src="/images/home/map.png" alt="" />
-                                        <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+                                        <p>33027, УКРАЇНА, м. Рівне, вул. Буковинська, 5</p>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +299,7 @@
                     <div class="footer-bottom">
                         <div class="container">
                             <div class="row">
-                                <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+                                <p class="pull-left">Copyright © 2018 Kurylovych Com. All rights reserved.</p>
                                 <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                             </div>
                         </div>
@@ -318,28 +319,3 @@
 </body>
 </html>
 
-@*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Мій інтернет-магазин", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашня сторінка", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Про нас", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
-                    @if (User.IsInRole("Administrator"))
-                    {
-                        <li>@Html.ActionLink("Адмінка", "Index", "Home", new { area = "Admin" }, null)</li>
-                        <li>@Html.ActionLink("Користувачі та ролі", "Index", "AdminUserRole")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*@

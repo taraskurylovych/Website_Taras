@@ -25,6 +25,7 @@ namespace Diplom_WebSite_Taras.DAL.Entities
         public double Quantity { get; set; }
         [Required, StringLength(maximumLength: 255)]
         public string Description { get; set; }
+        //public System.DateTime DateCreated { get; set; }
         public string Image { get; set; }
 
         public virtual Category Category { get; set; }

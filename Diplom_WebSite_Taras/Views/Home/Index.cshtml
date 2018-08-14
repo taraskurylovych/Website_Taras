@@ -23,39 +23,39 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>І</span>-Магазин</h1>
-                                <h2>Онлайн-магазин постелі</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Докладніше</button>
+                                <h1><span>Інтернет-магазин "Пір'їнка"</span></h1>
+                                <h2>Онлайн-магазин постільної білизни</h2>
+                                <p>Безкоштовна доставка товарів на суму від 500 грн.! </p>
+                                @Html.ActionLink("Докладніше", "FreeDelivery500", "Home", new { area = "" }, new { @class = "btn btn-default" })
                             </div>
                             <div class="col-sm-6">
-                                <img src="/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-                                <img src="/images/home/pricing.png" class="pricing" alt="" />
+                                <img src="~/images/home/free-delivery.jpg" class="girl img-responsive" alt="" />
+                                
                             </div>
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>I</span>-Магазин</h1>
-                                <h2>100% Гарантія від виробника</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Докладніше</button>
+                                <h1><span>Інтернет-магазин "Пір'їнка"</span></h1>
+                                <h2>Гарантія - 2 роки на всі матраси.</h2>
+                                <p>Гарантовано даємо додатковий рік гарантії на всі матраси.</p>
+                                @Html.ActionLink("Докладніше", "Warranty", "Home", new { area = "" }, new { @class = "btn btn-default" })
                             </div>
                             <div class="col-sm-6">
-                                <img src="/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-                                <img src="/images/home/pricing.png" class="pricing" alt="" />
+                                <img src="~/images/home/Warranty.jpg" class="girl img-responsive" alt="" />
+                                @*<img src="/images/home/pricing.png" class="pricing" alt="" />*@
                             </div>
                         </div>
 
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>I</span>-Магазин</h1>
-                                <h2>Найкращі товари</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Докладніше</button>
+                                <h1><span>Інтернет-магазин "Пір'їнка"</span></h1>
+                                <h2>Оплата частинами без переплат</h2>
+                                <p>Оплати товар частина від Приватбанку.</p>
+                                @Html.ActionLink("Докладніше", "Oplata", "Home", new { area = "" }, new { @class = "btn btn-default" })
                             </div>
                             <div class="col-sm-6">
-                                <img src="/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-                                <img src="/images/home/pricing.png" class="pricing" alt="" />
+                                <img src="~/images/home/oplata.jpg" class="girl img-responsive" alt="" />
+                                @*<img src="/images/home/pricing.png" class="pricing" alt="" />*@
                             </div>
                         </div>
 
@@ -94,11 +94,12 @@
                             <div id="sportswear" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Nike </a></li>
-                                        <li><a href="#">Under Armour </a></li>
-                                        <li><a href="#">Adidas </a></li>
-                                        <li><a href="#">Puma</a></li>
-                                        <li><a href="#">ASICS </a></li>
+                                        <li><a href="#">Подушки </a></li>
+                                        <li><a href="#">Наволочки</a></li>
+                                        <li><a href="#">Наматрасники </a></li>
+                                        <li><a href="#">Матраси</a></li>
+                                        <li><a href="#">Ковдри </a></li>
+                                        <li><a href="#">Пледи </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -153,37 +154,37 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Kids</a></h4>
+                                <h4 class="panel-title"><a href="#">Подушки</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Fashion</a></h4>
+                                <h4 class="panel-title"><a href="#">Наволочки</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Households</a></h4>
+                                <h4 class="panel-title"><a href="#">Матраси</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Interiors</a></h4>
+                                <h4 class="panel-title"><a href="#">Наматрасники</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Clothing</a></h4>
+                                <h4 class="panel-title"><a href="#">Ковдри</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Bags</a></h4>
+                                <h4 class="panel-title"><a href="#">Пледи</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Shoes</a></h4>
+                                <h4 class="panel-title"><a href="#">Рушники</a></h4>
                             </div>
                         </div>
                     </div><!--/category-products-->
@@ -232,7 +233,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    @*<img src="~/Upload/UserImages/64190441-85bf-4caf-8191-c4071d4c77f4.jpg" alt="" />*@
+                                    
                                     <img src="@string.Format("{0}{1}",@imagePath,@item.Image)" alt="" />
                                     <img src="@imagePath+@Html.DisplayFor(modelItem => item.Image)" alt=""/>
 
@@ -251,7 +252,8 @@
                                         <h2>Ціна: @Html.DisplayFor(modelItem => item.Price) грн.</h2>
                                         <h3>Назва товару: @Html.DisplayFor(modelItem => item.Name)</h3>
 
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Купити</a>
+                                        <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Купити@*@Html.ActionLink("Додати до кошика", "AddToCart",
+                                                "ShoppingCart", new { id = Model.Id }, "")*@</a>
                                         @Html.ActionLink("Детально", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })
                                     </div>
                                 </div>
@@ -595,9 +597,19 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="/images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
+                                                <h2>$1000000</h2>
                                                 <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <!-- The Modal -->
+                                                <div id="myModal" class="modal">
+
+                                                    <!-- Modal content -->
+                                                    <div class="modal-content">
+                                                        <span class="close">&times;</span>
+                                                        <p>Товар додано до кошику...</p>
+                                                    </div>
+
+                                                </div>
                                             </div>
 
                                         </div>
@@ -660,30 +672,33 @@
     </div>
 </section>
 
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("btnModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
