@@ -7,13 +7,13 @@ namespace Diplom_WebSite_Taras.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Dateremove : IMigrationMetadata
+    public sealed partial class AddBasketLine : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Dateremove));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddBasketLine));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808141943233_Date remove"; }
+            get { return "201808151959527_AddBasketLine"; }
         }
         
         string IMigrationMetadata.Source

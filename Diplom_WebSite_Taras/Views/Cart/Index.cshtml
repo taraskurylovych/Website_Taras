@@ -1,0 +1,76 @@
+﻿@model Diplom_WebSite_Taras.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Ваш кошик";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (Model.CartLines.Count() > 0)
+{
+    <div>
+        @using (Html.BeginForm("UpdateCart", "Cart"))
+        {
+            @Html.AntiForgeryToken();
+            <input class="btn btn-sm btn-success" type="submit" value="Оновити кошик" />
+            <hr />
+            <div class="row">
+                <div class="col-md-4"><label>Позиція</label></div>
+                <div class="col-md-3"><label>Кількість</label></div>
+                <div class="col-md-1"><label>Ціна</label></div>
+                <div class="col-md-1"><label>Підсумок</label></div>
+            </div>
+            <hr />
+            for (int i = 0; i < Model.CartLines.Count; i++)
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.ActionLink(Model.CartLines[i].Product.Name, "ProductDetails", "Products", new { id = Model.CartLines[i].ProductId }, null)<br />
+                        @if (Model.CartLines[i].Product != null)
+                        {
+                            <a href="@Url.Action("ProductDetails", "Products", new { id = Model.CartLines[i].ProductId })">
+                                @*<img src="@(Url.Content(Constants.ProductThumbnailPath) +
+                                Model.CartLines[i].Product.ProductImageMappings.OrderBy(pim => pim.ImageNumber).ElementAt(0).ProductImage.FileName)">*@
+                            </a>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        @Html.HiddenFor(productID => Model.CartLines[i].ProductId)
+                        @Html.TextBoxFor(quantity => Model.CartLines[i].Quantity)
+                        <p>
+                            @Html.ValidationMessageFor(quantity => Model.CartLines[i].Quantity, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        @Html.DisplayFor(price => Model.CartLines[i].Product.Price)
+                    </div>
+                    <div class="col-md-1">
+                        @((Model.CartLines[i].Quantity * Model.CartLines[i].Product.Price).ToString("c"))
+                    </div>
+                    <div class="col-md-1">
+                        @Html.ActionLink("Видалити позицію", "RemoveLine", "Cart", new { id = Model.CartLines[i].Product.Id }, null)
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+        <div class="row">
+            <div class="col-md-8">
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.TotalCost)
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>На жаль, Ваш кошик порожній, але Ви все ще можете @Html.ActionLink("вибрати собі необхідний товар для покупки.", "Index", "Home")</p>
+}
+<div>
+    @Html.ActionLink("Продовжити покупки", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

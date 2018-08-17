@@ -17,6 +17,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Producer
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -56,10 +57,11 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             return View(producers.ToPagedList(pageNumber, pageSize));
-            //return View(db.Producers.ToList().ToPagedList(page ?? 1,5));
+            
         }
 
         // GET: Admin/Producer/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -75,12 +77,15 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Producer/Create
+
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Admin/Producer/Create
+        [Authorize(Roles = "Administrator")]
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -98,6 +103,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Producer/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -113,6 +119,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // POST: Admin/Producer/Edit/5
+        [Authorize(Roles = "Administrator")]
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -129,6 +136,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Producer/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -144,6 +152,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // POST: Admin/Producer/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

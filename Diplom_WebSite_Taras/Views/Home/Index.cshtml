@@ -8,6 +8,68 @@
     string imagePath = Url.Content("~/Upload/UserImages/");
 }
 
+<div class="header-bottom">
+    <!--header-bottom-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="mainmenu pull-left">
+                    <ul class="nav navbar-nav collapse navbar-collapse">
+
+                        <li>@Html.ActionLink("Домашня сторінка", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        <li class="dropdown">
+                            <a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="shop.html">Товари</a></li>
+                                <li><a href="product-details.html">Товари детально</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="cart.html">Кошик</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="blog.html">Blog List</a></li>
+                                <li><a href="blog-single.html">Blog Single</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="404.html">404</a></li>
+                        <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Про нас", "About", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+            @*<div class="col-sm-3">
+                <div class="search_box pull-right">
+                    <input type="text" placeholder="Пошук" />
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div><!--/header-bottom-->
+
+<div class="container">
+    <div class="nav navbar-nav collapse navbar-collapse">
+        <div class="row">
+            <div class="col-sm-11">
+                <div class="search_box pull-left">
+                    <input type="text" placeholder="Пошук" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+   
 <section id="slider">
     <!--slider-->
     <div class="container">
@@ -73,6 +135,7 @@
         </div>
     </div>
 </section><!--/slider-->
+</div>
 
 <section>
     <div class="container">
@@ -234,18 +297,18 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     
-                                    <img src="@string.Format("{0}{1}",@imagePath,@item.Image)" alt="" />
-                                    <img src="@imagePath+@Html.DisplayFor(modelItem => item.Image)" alt=""/>
+                                    <img src="@string.Format("{0}{1}",@imagePath,@item.Image)" width="193" height="260" alt="" />
+                                    @*<img src="@imagePath+@Html.DisplayFor(modelItem => item.Image)" alt=""/>*@
 
                                     <h2>Ціна: @Html.DisplayFor(modelItem => item.Price) грн.</h2>
-                                    <h3>Назва: @Html.DisplayFor(modelItem => item.Name)</h3>
-                                    <h4>Опис товару: @Html.DisplayFor(modelItem => item.Description)</h4>
+                                    <h4>Назва: @Html.DisplayFor(modelItem => item.Name)</h4>
+                                    <h4>Категорія: @Html.DisplayFor(modelItem => item.CategoryName)</h4>
+                                    <p>Опис товару: @Html.DisplayFor(modelItem => item.Description)</p>
                                     
                                     
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Купити </a>
+                                    <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Купити </a>
                                         @Html.ActionLink("Детально", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })
-                                    @*</a>*@
-                                    @*<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Купити</a>*@
+                                   
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
@@ -258,11 +321,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Додати в список бажань</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Порівняти</a></li>
-                                </ul>
+                           
+                            <!-- The Modal -->
+                            <div id="myModal" class="modal">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <p>@Html.DisplayFor(modelItem => item.Description) @Html.DisplayFor(modelItem => item.Name) успішно додано до кошику!</p>
+                                </div>
+
                             </div>
                         </div>
                     </div>                    
@@ -599,17 +667,8 @@
                                                 <img src="/images/home/recommend3.jpg" alt="" />
                                                 <h2>$1000000</h2>
                                                 <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                <!-- The Modal -->
-                                                <div id="myModal" class="modal">
-
-                                                    <!-- Modal content -->
-                                                    <div class="modal-content">
-                                                        <span class="close">&times;</span>
-                                                        <p>Товар додано до кошику...</p>
-                                                    </div>
-
-                                                </div>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>                                               
+                                               
                                             </div>
 
                                         </div>

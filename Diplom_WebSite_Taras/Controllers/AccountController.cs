@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Configuration;
 using Diplom_WebSite_Taras.Models;
 using static Diplom_WebSite_Taras.ApplicationSignInManager;
+using Diplom_WebSite_Taras.DAL.Entities;
 
 namespace Diplom_WebSite_Taras.Controllers
 {
@@ -55,14 +56,14 @@ namespace Diplom_WebSite_Taras.Controllers
             }
         }
 
-        private void MigrateShoppingCart(string UserName)
-        {
-            // Associate shopping cart items with logged-in user
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+        //private void MigrateShoppingCart(string UserName)
+        //{
+        //    // Associate shopping cart items with logged-in user
+        //    var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            cart.MigrateCart(UserName);
-            Session[ShoppingCart.CartSessionKey] = UserName;
-        }
+        //    cart.MigrateCart(UserName);
+        //    Session[ShoppingCart.CartSessionKey] = UserName;
+        //}
 
         //
         // GET: /Account/Login
@@ -87,6 +88,13 @@ namespace Diplom_WebSite_Taras.Controllers
             {
                 return View(model);
             }
+            //check if a user was previously logged in without logging out. This can occur for example
+            //if a logged in user is redirected to an admin page and then an admin user logs in
+            bool userWasLoggedIn = false;
+            if (!string.IsNullOrWhiteSpace(User.Identity.Name))
+            {
+                userWasLoggedIn = true;
+            }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -94,6 +102,18 @@ namespace Diplom_WebSite_Taras.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //this is needed to ensure the previous user's basket is not carried over
+                    if (userWasLoggedIn)
+                    {
+                        Session.Abandon();
+                    }
+                    //Cart = Cart.GetCart();
+                    ////if there was no previously logged in user migrate the basket from GUID to the
+                    ////username
+                    //if (!userWasLoggedIn)
+                    //{
+                    //    cart.MigrateBasket(model.Email);
+                    //}
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -154,7 +174,7 @@ namespace Diplom_WebSite_Taras.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return View();            
         }
 
         //
@@ -171,7 +191,10 @@ namespace Diplom_WebSite_Taras.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    Cart cart = Cart.GetCart();
+                    cart.MigrateCart(model.Email);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -407,6 +430,8 @@ namespace Diplom_WebSite_Taras.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //Додали рядок
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 

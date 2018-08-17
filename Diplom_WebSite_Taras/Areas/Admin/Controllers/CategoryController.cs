@@ -17,7 +17,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Category
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -61,6 +61,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Category/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -76,15 +77,19 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Category/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Admin/Category/Create
+        [Authorize(Roles = "Administrator")]
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Published")] Category category)
         {
@@ -99,6 +104,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Category/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -114,6 +120,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // POST: Admin/Category/Edit/5
+        [Authorize(Roles = "Administrator")]
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -130,6 +137,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Category/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -145,6 +153,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // POST: Admin/Category/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

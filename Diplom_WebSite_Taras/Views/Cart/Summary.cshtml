@@ -1,0 +1,9 @@
+﻿@model Diplom_WebSite_Taras.Models.CartSummaryViewModel
+
+<ul class="nav navbar-nav navbar-right">
+    @foreach (var item in Model)
+        {
+           @Html.ActionLink("Кошик: " + @Html.DisplayFor(modelItem => item.NumberOfItems) + " позицій(ї) " +
+           HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.TotalCost).ToString()), "Index", "Basket")
+        }
+</ul>

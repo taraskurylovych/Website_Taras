@@ -20,11 +20,11 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Models
         public double Quantity { get; set; }
         [Display(Name = "Опис продукту")]
         public string Description { get; set; }
-        //public string Image64 { get; set; }
         [Required, Display(Name = "Категорія")]
         public string CategoryName { get; set; }
         [Required, Display(Name = "Виробник")]
         public string ProducerName { get; set; }
+        [Required, Display(Name = "Зображення")]
         public string Image { get; set; }
 
     }
@@ -49,6 +49,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Models
         public double Quantity { get; set; }
         [Display(Name = "Опис продукту")]
         public string Description { get; set; }
+      
     }
 
     public class ProductCreateViewModel

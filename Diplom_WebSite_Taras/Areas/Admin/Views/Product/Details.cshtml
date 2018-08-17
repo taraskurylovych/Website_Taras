@@ -1,7 +1,8 @@
 ﻿@model Diplom_WebSite_Taras.Areas.Admin.Models.ProductItemViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Детально про продукт";
+    string imagePath = Url.Content("~/Upload/UserImages/");
 }
 
 <h2>Детально про продукт</h2>
@@ -57,8 +58,17 @@
         <dd>
             @Html.DisplayFor(model => model.ProducerName)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>    
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>    
+ 
     </dl>
+    <div>
+        <img src="@string.Format("{0}{1}",@imagePath, @Html.DisplayFor(model => model.Image))" width="57" height="78" alt="" />
+    </div>
 </div>
 <p>
     @Html.ActionLink("Змінити", "Edit", new { id = Model.Id }) |

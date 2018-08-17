@@ -21,7 +21,9 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
         // GET: Admin/Product
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(int? page)
         {
             List<ProductItemViewModel> model =
@@ -36,7 +38,8 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                      Quantity = p.Quantity,
                      Description = p.Description,
                      CategoryName = p.Category.Name,
-                     ProducerName = p.Producer.Name
+                     ProducerName = p.Producer.Name,
+                     Image = p.Image
 
                  }).ToList();
           return View(model.ToList().ToPagedList(page ?? 1, 5));
@@ -45,10 +48,11 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ProductCreateViewModel model = new ProductCreateViewModel();
-            //model.CategoryId = 1;
+            
             model.SelectListCategories = _context.Categories
                 .Select(r => new SelectItemViewModel
                 {
@@ -65,7 +69,9 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
 
             return View(model);
         }
+
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCreateViewModel model)
         {
@@ -121,6 +127,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
 
@@ -137,6 +144,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                 model.Description = product.Description;
                 model.Quantity = product.Quantity;
                 model.Id = product.Id;
+                
 
 
             }
@@ -161,6 +169,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductEditViewModel model)
         {
@@ -196,7 +205,9 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                 }).ToList();
             return View(model);
         }
+
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             ProductItemViewModel model = new ProductItemViewModel();
@@ -209,11 +220,14 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                 model.Quantity = product.Quantity;
                 model.Description = product.Description;
                 model.CategoryName = product.Category.Name;
-                model.ProducerName = product.Producer.Name;               
+                model.ProducerName = product.Producer.Name;   
+                            
             }
             return View(model);
         }
+
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(ProductItemViewModel model)
         {
@@ -228,6 +242,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             ProductItemViewModel model = new ProductItemViewModel();

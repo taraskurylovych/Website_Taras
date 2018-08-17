@@ -5,14 +5,12 @@
     string imagePath = Url.Content("~/Upload/UserImages/");
 }
 
-<h2>ProductDetails</h2>
-
 <section>
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2>Категорії</h2>
                     <div class="panel-group category-products" id="accordian">
                         <!--category-productsr-->
                         <div class="panel panel-default">
@@ -123,7 +121,7 @@
 
                     <div class="brands_products">
                         <!--brands_products-->
-                        <h2>Brands</h2>
+                        <h2>Виробники</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
@@ -200,6 +198,7 @@
                             <!--/product-information-->
                             <img src="/images/product-details/new.jpg" class="newarrival" alt="" />
                             <h2>@Html.DisplayFor(model => model.Name)</h2>
+                            <h3>Категорія: @Html.DisplayFor(model => model.CategoryName)</h3>
                             <p>Код продукту (ID): @Html.DisplayFor(model => model.Id)</p>
                             @*<img src="/images/product-details/rating.png" alt="" />*@
                             <span>
@@ -214,7 +213,7 @@
                                 </button>
                             </span>
                             <p><b>Наявність:</b> В наявності</p>
-                            @*<p><b>Стан:</b> Новий</p>*@
+                            
                             <p><b>Виробник:</b> @Html.DisplayFor(model => model.ProducerName)</p>
                             <p><b>Опис товару:</b> @Html.DisplayFor(model => model.Description)</p>
                             <a href=""><img src="/images/product-details/share.png" class="share img-responsive" alt="" /></a>
@@ -238,8 +237,6 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            @*<img src="@string.Format("{0}{1}",@imagePath,@model =>Image)" alt="" />
-                                            <img src="@string.Format("{0}{1}",@imagePath,@model => model.Image)" alt="" />*@
                                             <img src="@imagePath+@Html.DisplayFor(model => model.Image)" alt="" />
                                             <h2>@Html.DisplayFor(model => model.Price) грн.</h2>
                                             <p>@Html.DisplayFor(model => model.Name)</p>

@@ -1,7 +1,7 @@
 ﻿@model Diplom_WebSite_Taras.DAL.Entities.Category
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Створення категорії";
 }
 
 <h2>Створити категорію</h2>
@@ -11,8 +11,7 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        @*<h4>Category</h4>*@
+    <div class="form-horizontal">        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

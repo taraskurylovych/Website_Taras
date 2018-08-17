@@ -16,7 +16,30 @@ namespace Diplom_WebSite_Taras.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        
+
+        //public ActionResult Index(int? page)
+        //{                     
+        //    List<ProductItemViewModel> model =
+        //         _context.Products
+        //         //.Include(c => c.Category)
+        //         //.Include(pr => pr.Producer)
+        //         .Select(p => new ProductItemViewModel
+        //         {
+        //             Id = p.Id,
+        //             Name = p.Name,
+        //             Price = p.Price,
+        //             Quantity = p.Quantity,
+        //             Description = p.Description,
+        //             CategoryName = p.Category.Name,
+        //             ProducerName = p.Producer.Name,
+        //             Image = p.Image
+
+        //         }).ToList();
+
+        //    return View(model.ToList().ToPagedList(page ?? 1, 5));
+
+        //}
+
         public ActionResult Index(int? page)
         {
             List<ProductItemViewModel> model =
@@ -35,7 +58,6 @@ namespace Diplom_WebSite_Taras.Controllers
                      Image = p.Image
 
                  }).ToList();
-            
             return View(model.ToList().ToPagedList(page ?? 1, 5));
 
         }
@@ -96,4 +118,3 @@ namespace Diplom_WebSite_Taras.Controllers
     }
 }
 
-//path content

@@ -87,7 +87,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 List<ExpandedUserDTO> col_UserDTO = new List<ExpandedUserDTO>();
 
                 return View(col_UserDTO.ToPagedList(1, 25));
@@ -130,12 +130,12 @@ namespace Diplom_WebSite_Taras.Controllers
 
                 if (Email == "")
                 {
-                    throw new Exception("No Email");
+                    throw new Exception("Немає електронної пошти користувача (Email).");
                 }
 
                 if (Password == "")
                 {
-                    throw new Exception("No Password");
+                    throw new Exception("Немає пароля.");
                 }
 
                 // UserName is LowerCase of the Email
@@ -162,14 +162,14 @@ namespace Diplom_WebSite_Taras.Controllers
                 {
                     ViewBag.Roles = GetAllRolesAsSelectList();
                     ModelState.AddModelError(string.Empty,
-                        "Error: Failed to create the user. Check password requirements.");
+                        "Помилка: Неможливо створити користувача. Перевірте налаштування пароля.");
                     return View(paramExpandedUserDTO);
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.Roles = GetAllRolesAsSelectList();
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 return View("Create");
             }
         }
@@ -218,7 +218,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 return View("EditUser", GetUser(paramExpandedUserDTO.UserName));
             }
         }
@@ -239,7 +239,7 @@ namespace Diplom_WebSite_Taras.Controllers
                 if (UserName.ToLower() == this.User.Identity.Name.ToLower())
                 {
                     ModelState.AddModelError(
-                        string.Empty, "Error: Cannot delete the current user");
+                        string.Empty, "Помилка: Неможливо видалити даного користувача.");
 
                     return View("EditUser");
                 }
@@ -259,7 +259,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 return View("EditUser", GetUser(UserName));
             }
         }
@@ -309,7 +309,7 @@ namespace Diplom_WebSite_Taras.Controllers
                 string UserName = paramUserAndRolesDTO.UserName;
                 string strNewRole = Convert.ToString(Request.Form["AddRole"]);
 
-                if (strNewRole != "No Roles Found")
+                if (strNewRole != "Не знайдено жодноъ ролі!")
                 {
                     // Go get the User
                     ApplicationUser user = UserManager.FindByName(UserName);
@@ -327,7 +327,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 return View("EditRoles");
             }
         }
@@ -359,7 +359,7 @@ namespace Diplom_WebSite_Taras.Controllers
                     this.User.Identity.Name.ToLower() && RoleName == "Administrator")
                 {
                     ModelState.AddModelError(string.Empty,
-                        "Error: Cannot delete Administrator Role for the current user");
+                        "Помилка: Неможливо видалити роль адміністратора для даного користувача.");
                 }
 
                 // Go get the User
@@ -374,7 +374,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
 
                 ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
 
@@ -439,7 +439,7 @@ namespace Diplom_WebSite_Taras.Controllers
 
                 if (RoleName == "")
                 {
-                    throw new Exception("No RoleName");
+                    throw new Exception("Немає назви Ролі.");
                 }
 
                 // Create Role
@@ -457,7 +457,7 @@ namespace Diplom_WebSite_Taras.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Помилка: " + ex);
                 return View("AddRole");
             }
         }
@@ -477,7 +477,7 @@ namespace Diplom_WebSite_Taras.Controllers
 
                 if (RoleName.ToLower() == "administrator")
                 {
-                    throw new Exception(String.Format("Cannot delete {0} Role.", RoleName));
+                    throw new Exception(String.Format("Неможливо видалити {0} Роль.", RoleName));
                 }
 
                 var roleManager =
@@ -489,7 +489,7 @@ namespace Diplom_WebSite_Taras.Controllers
                 {
                     throw new Exception(
                         String.Format(
-                            "Canot delete {0} Role because it still has users.",
+                            "Неможливо видалити {0} Роль, тому що вона все ще використовується.",
                             RoleName)
                             );
                 }
@@ -505,7 +505,7 @@ namespace Diplom_WebSite_Taras.Controllers
                 {
                     throw new Exception(
                         String.Format(
-                            "Canot delete {0} Role does not exist.",
+                            "Немодливо видалити {0} Роль не існує.",
                             RoleName)
                             );
                 }
@@ -589,7 +589,7 @@ namespace Diplom_WebSite_Taras.Controllers
             SelectRoleListItems.Add(
                 new SelectListItem
                 {
-                    Text = "Select",
+                    Text = "Виберіть",
                     Value = "0"
                 });
 
@@ -709,7 +709,7 @@ namespace Diplom_WebSite_Taras.Controllers
 
             if (colUserRoleDTO.Count() == 0)
             {
-                colUserRoleDTO.Add(new UserRoleDTO { RoleName = "No Roles Found" });
+                colUserRoleDTO.Add(new UserRoleDTO { RoleName = "Не знайдено жодної ролі!" });
             }
 
             ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
@@ -735,7 +735,7 @@ namespace Diplom_WebSite_Taras.Controllers
             // If we could not find the user, throw an exception
             if (user == null)
             {
-                throw new Exception("Could not find the User");
+                throw new Exception("Неможливо знайти користувача");
             }
 
             var colRolesForUser = UserManager.GetRoles(user.Id).ToList();
@@ -745,7 +745,7 @@ namespace Diplom_WebSite_Taras.Controllers
 
             if (colRolesUserInNotIn.Count() == 0)
             {
-                colRolesUserInNotIn.Add("No Roles Found");
+                colRolesUserInNotIn.Add("Не знайдено жодної ролі!");
             }
 
             return colRolesUserInNotIn;
