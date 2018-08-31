@@ -15,35 +15,28 @@ namespace Diplom_WebSite_Taras.Controllers
         public HomeController()
         {
             _context = new ApplicationDbContext();
-        }
+        }       
 
-        //public ActionResult Index(int? page)
-        //{                     
-        //    List<ProductItemViewModel> model =
-        //         _context.Products
-        //         //.Include(c => c.Category)
-        //         //.Include(pr => pr.Producer)
-        //         .Select(p => new ProductItemViewModel
-        //         {
-        //             Id = p.Id,
-        //             Name = p.Name,
-        //             Price = p.Price,
-        //             Quantity = p.Quantity,
-        //             Description = p.Description,
-        //             CategoryName = p.Category.Name,
-        //             ProducerName = p.Producer.Name,
-        //             Image = p.Image
-
-        //         }).ToList();
-
-        //    return View(model.ToList().ToPagedList(page ?? 1, 5));
-
-        //}
-
-        public ActionResult Index(int? page)
+        public ActionResult Index(string search, int? category, int? producer, int? page)
         {
+            var query = _context.Products.AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                query=query.Where(p=>p.Name.Contains(search));
+            }
+            if (category!=null)
+            {
+                query = query.Where(p => p.Category.Id==category);
+            }
+            if (producer != null)
+            {
+                query = query.Where(p => p.Producer.Id == producer);
+            }
+
+            ViewBag.CurrentFilter = search;
+            
             List<ProductItemViewModel> model =
-                 _context.Products
+                 query
                  //.Include(c => c.Category)
                  //.Include(pr => pr.Producer)
                  .Select(p => new ProductItemViewModel
@@ -58,7 +51,11 @@ namespace Diplom_WebSite_Taras.Controllers
                      Image = p.Image
 
                  }).ToList();
-            return View(model.ToList().ToPagedList(page ?? 1, 5));
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    products = products.Where(s => s.Name.Contains(searchString));
+            //}
+            return View(model.ToList().ToPagedList(page ?? 1, 6));
 
         }
 

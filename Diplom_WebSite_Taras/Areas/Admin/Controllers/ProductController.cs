@@ -24,12 +24,26 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
 
         // GET: Admin/Product
         [Authorize(Roles = "Administrator")]
-        public ActionResult Index(int? page)
+        public ActionResult Index(string currentFilter, string search, int? page)
         {
+            var query = _context.Products.AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
             List<ProductItemViewModel> model =
-                 _context.Products
-                 .Include(c => c.Category)
-                 .Include(pr => pr.Producer)
+                query
+
+                 //query.Products
+                 //.Include(c => c.Category)
+                 //.Include(pr => pr.Producer)
                  .Select(p => new ProductItemViewModel
                  {
                      Id = p.Id,
@@ -42,11 +56,9 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                      Image = p.Image
 
                  }).ToList();
-          return View(model.ToList().ToPagedList(page ?? 1, 5));
-           
+          return View(model.ToList().ToPagedList(page ?? 1, 8));           
         }
-
-
+        
         [HttpGet]
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()

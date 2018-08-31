@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Diplom_WebSite_Taras.DAL.Entities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Diplom_WebSite_Taras.Models
 {
@@ -17,6 +19,8 @@ namespace Diplom_WebSite_Taras.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual UserProfile UserProfile { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -30,8 +34,12 @@ namespace Diplom_WebSite_Taras.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Producer> Producers { get; set; }
         public DbSet<CartLine> CartLines { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLine> OrderLines { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
-       
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

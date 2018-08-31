@@ -54,7 +54,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(categories.ToPagedList(pageNumber, pageSize));
             //return View(db.Categories.ToList());

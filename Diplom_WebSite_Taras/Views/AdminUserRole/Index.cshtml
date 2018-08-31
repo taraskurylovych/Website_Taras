@@ -38,9 +38,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-            </td>*@
             <td>
                 @Html.ActionLink("Змінити", "EditUser", new { UserName = item.UserName }, new { @class = "btn btn-success btn-large" }) |
                 @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))

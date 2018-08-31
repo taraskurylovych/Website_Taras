@@ -13,17 +13,16 @@
 <p>
     @Html.ActionLink("Створити новий продукт", "Create", null, new { @class = "btn btn-success btn-large" })
 </p>
-@*<p>
+
+<p>
     @using (Html.BeginForm("Index", "Product", FormMethod.Get))
     {
-        <b>Пошук: </b> @Html.RadioButton("searchBy", "Name", true) <text>Продукти</text>
-        <b>Пошук: </b> @Html.RadioButton("searchBy", "CategoryName") <text>Категорії</text>
-    <b>Пошук: </b> @Html.RadioButton("searchBy", "ProducerName") <text>Виробники</text> <br />
-    @Html.TextBox("search") <input type="submit" value="Шукати" />
+        <span>Назва товару:</span>
+        @Html.TextBox("search", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Пошук" />
     }
+</p>
 
-
-</p>*@
 <table class="table">
     <tr>
         <th>

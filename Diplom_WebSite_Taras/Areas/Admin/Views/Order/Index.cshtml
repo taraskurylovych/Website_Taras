@@ -1,0 +1,125 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@model PagedList.IPagedList<Diplom_WebSite_Taras.DAL.Entities.Order>
+
+@{
+    ViewBag.Title = "Замовлення";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("Index", "Order", FormMethod.Get))
+{
+    <div class="row form-group">
+        <div class="col-md-2">
+            <label>Пошук замовлень по Id, або по тексту:</label>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBox("OrderSearch", null, new { @class = "form-control", @placeholder = "Пошук замовлень" })
+        </div>
+        <div class="col-md-2">
+            <label>Пошук за певний період:</label>
+        </div>
+        <div class="col-md-2">
+            <input type="date" id="StartDate" name="StartDate" class="form-control" value="@Request.QueryString["StartDate"]" />
+        </div>
+        <div class="col-md-2">
+            <input type="date" id="EndDate" name="EndDate" class="form-control" value="@Request.QueryString["EndDate"]" />
+        </div>
+        <button type="submit" class="btn btn-success">Шукати</button>
+    </div>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().OrderId)
+        </th>
+        <th>
+            @Html.ActionLink("User", "Index", new
+       {
+           orderSortOrder = ViewBag.UserSort,
+           orderSearch = ViewBag.CurrentOrderSearch,
+           startdate = ViewBag.StartDate,
+           endDate = ViewBag.EndDate
+       })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ApplicationUserOf.UserProfile.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ApplicationUserOf.UserProfile.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DeliveryName)
+        </th>      
+        <th>
+            @Html.ActionLink("Загальна сума замовлення", "Index", new
+       {
+           orderSortOrder = ViewBag.PriceSort,
+           orderSearch = ViewBag.CurrentOrderSearch,
+           startdate = ViewBag.StartDate,
+           endDate = ViewBag.EndDate
+       })
+        </th>
+        <th>
+            @Html.ActionLink("Час замовлення", "Index", new
+       {
+           orderSortOrder = ViewBag.DateSort,
+           orderSearch = ViewBag.CurrentOrderSearch,
+           startdate = ViewBag.StartDate,
+           endDate = ViewBag.EndDate
+       })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        string name = "";
+        string phone = "";
+        string address = "";
+        if(item.ApplicationUserOf.UserProfile!=null)
+        {
+            name = item.ApplicationUserOf.UserProfile.FirstName + " " + item.ApplicationUserOf.UserProfile.LastName;
+            phone = item.ApplicationUserOf.UserProfile.Phone;
+            address = item.ApplicationUserOf.UserProfile.Address;
+
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @name
+            </td>
+            <td>
+                @phone
+            </td>
+            <td>
+                @address
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>                
+                @Html.ActionLink("Детально", "Details", new { id = item.OrderId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Видалити", "Delete", new { id = item.OrderId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

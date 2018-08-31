@@ -59,14 +59,14 @@ namespace Diplom_WebSite_Taras
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //   appId: "331779840911275",
+            //   appSecret: "440a1612dee3f6ebadcf1a4e5b22e206");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "774833595366-h0t5ahblp92e99j43jdnqbfb60bvm0tb.apps.googleusercontent.com",
+                ClientSecret = "YnPzIdj7rq4kZA2bh8_Rveb5"
+            });
         }
     }
 }

@@ -28,10 +28,9 @@
                         <li class="dropdown">
                             <a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="shop.html">Товари</a></li>
-                                <li><a href="product-details.html">Товари детально</a></li>
+                                <li><a href="~/Home/">Усі товари</a></li>
                                 <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="cart.html">Кошик</a></li>
+                                <li><a href="~/Cart/">Кошик</a></li>                                
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -40,18 +39,21 @@
                                 <li><a href="blog.html">Blog List</a></li>
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
-                        </li>
-                        <li><a href="404.html">404</a></li>
+                        </li>                        
                         <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Про нас", "About", "Home")</li>
+                        
                     </ul>
+                    <p>
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                        {
+                            <span>Назва товару:</span> 
+                            @Html.TextBox("search", ViewBag.CurrentFilter as string)
+                                <input type = "submit" value = "Пошук" />
+                        }
+                    </p>
                 </div>
             </div>
-            @*<div class="col-sm-3">
-                <div class="search_box pull-right">
-                    <input type="text" placeholder="Пошук" />
-                </div>
-            </div>*@
         </div>
     </div>
 </div><!--/header-bottom-->
@@ -60,9 +62,7 @@
     <div class="nav navbar-nav collapse navbar-collapse">
         <div class="row">
             <div class="col-sm-11">
-                <div class="search_box pull-left">
-                    <input type="text" placeholder="Пошук" />
-                </div>
+                            
             </div>
 
         </div>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <img src="~/images/home/Warranty.jpg" class="girl img-responsive" alt="" />
-                                @*<img src="/images/home/pricing.png" class="pricing" alt="" />*@
+                                
                             </div>
                         </div>
 
@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <img src="~/images/home/oplata.jpg" class="girl img-responsive" alt="" />
-                                @*<img src="/images/home/pricing.png" class="pricing" alt="" />*@
+                                
                             </div>
                         </div>
 
@@ -144,30 +144,8 @@
                 <div class="left-sidebar">
                     <h2>Категорії</h2>
                     <div class="panel-group category-products" id="accordian">
-                        <!--category-productsr-->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Sportswear
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="sportswear" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Подушки </a></li>
-                                        <li><a href="#">Наволочки</a></li>
-                                        <li><a href="#">Наматрасники </a></li>
-                                        <li><a href="#">Матраси</a></li>
-                                        <li><a href="#">Ковдри </a></li>
-                                        <li><a href="#">Пледи </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
+                        <!--category-productsr-->                       
+                        @*<div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordian" href="#mens">
@@ -175,26 +153,10 @@
                                         Mens
                                     </a>
                                 </h4>
-                            </div>
-                            <div id="mens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                        <li><a href="#">Armani</a></li>
-                                        <li><a href="#">Prada</a></li>
-                                        <li><a href="#">Dolce and Gabbana</a></li>
-                                        <li><a href="#">Chanel</a></li>
-                                        <li><a href="#">Gucci</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            </div>                           
+                        </div>*@
 
-                        <div class="panel panel-default">
+                        @*<div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordian" href="#womens">
@@ -203,51 +165,41 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div id="womens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                    </ul>
-                                </div>
+                           
+                        </div>*@
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><a href="?category=1">Подушки</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Подушки</a></h4>
+                                <h3 class="panel-title"><a href="?category=2">Наволочки</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Наволочки</a></h4>
+                                <h3 class="panel-title"><a href="?category=3">Матраци</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Матраси</a></h4>
+                                <h3 class="panel-title"><a href="?category=4">Пледи</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Наматрасники</a></h4>
+                                <h3 class="panel-title"><a href="?category=5">Наматрасники</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Ковдри</a></h4>
+                                <h3 class="panel-title"><a href="?category=6">Ковдри</a></h3>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Пледи</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Рушники</a></h4>
+                                <h3 class="panel-title"><a href="?category=7">Рушники</a></h3>
                             </div>
                         </div>
                     </div><!--/category-products-->
@@ -255,32 +207,44 @@
                     <div class="brands_products">
                         <!--brands_products-->
                         <h2>Виробники</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-                                <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-                                <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-                            </ul>
+                        <div class="brands-name">                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=1">"Айстра", ТОВ</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=2">"Конвалія", ТОВ</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=3">"Лагідні сни", ВАТ</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=4">"МЛС", ПМП</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=5">"Подушечка", ТОВ</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=6">"Солодкі сни", ТОВ</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="?producer=7">"Українські рушники", ВАТ</a></h4>
+                                </div>
+                            </div>
                         </div>
-                    </div><!--/brands_products-->
-
-                    <div class="price-range">
-                        <!--price-range-->
-                        <h2>Ранг цін</h2>
-                        <div class="well text-center">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-                            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div><!--/price-range-->
-
-                    <div class="shipping text-center">
-                        <!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
-                    </div><!--/shipping-->
+                    </div><!--/brands_products-->                   
 
                 </div>
             </div>
@@ -298,26 +262,25 @@
                                 <div class="productinfo text-center">
                                     
                                     <img src="@string.Format("{0}{1}",@imagePath,@item.Image)" width="193" height="260" alt="" />
-                                    @*<img src="@imagePath+@Html.DisplayFor(modelItem => item.Image)" alt=""/>*@
-
+                                    
                                     <h2>Ціна: @Html.DisplayFor(modelItem => item.Price) грн.</h2>
                                     <h4>Назва: @Html.DisplayFor(modelItem => item.Name)</h4>
                                     <h4>Категорія: @Html.DisplayFor(modelItem => item.CategoryName)</h4>
                                     <p>Опис товару: @Html.DisplayFor(modelItem => item.Description)</p>
                                     
-                                    
-                                    <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Купити </a>
-                                        @Html.ActionLink("Детально", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })
+                                    @Html.ActionLink("Купити", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })
+                                    @*<a href="#" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Купити </a>
+                                        @Html.ActionLink("Детально", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })*@
                                    
                                 </div>
-                                <div class="product-overlay">
+                                <div class="product-overlay" id="listPayProduct">
                                     <div class="overlay-content">
                                         <h2>Ціна: @Html.DisplayFor(modelItem => item.Price) грн.</h2>
                                         <h3>Назва товару: @Html.DisplayFor(modelItem => item.Name)</h3>
 
-                                        <a href="#" class="btn btn-default add-to-cart" id="btnModal"><i class="fa fa-shopping-cart"></i>Купити@*@Html.ActionLink("Додати до кошика", "AddToCart",
-                                                "ShoppingCart", new { id = Model.Id }, "")*@</a>
-                                        @Html.ActionLink("Детально", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart" })
+                                        @*<a class="btn btn-default add-to-cart my-click-pay" data-product-name="@item.Name"><i class="fa fa-shopping-cart"></i>Купити</a>*@
+                                        @*<a class="btn btn-default add-to-cart my-click-pay"><i class="fa fa-shopping-cart"></i>@Html.ActionLink("Купити", "ProductDetails", new { id = item.Id })</a>*@
+                                        @Html.ActionLink("Купити", "ProductDetails", new { id = item.Id }, new { @class = "btn btn-default add-to-cart"})
                                     </div>
                                 </div>
                             </div>
@@ -340,7 +303,7 @@
 
                 <div class="category-tab">
                     <!--category-tab-->
-                    <div class="col-sm-12">
+                    @*<div class="col-sm-12">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
                             <li><a href="#blazers" data-toggle="tab">Blazers</a></li>
@@ -624,120 +587,34 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!--/category-tab-->
-
-                <div class="recommended_items">
-                    <!--recommended_items-->
-                    <h2 class="title text-center">recommended items</h2>
-
-                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/images/home/recommend3.jpg" alt="" />
-                                                <h2>$1000000</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>                                               
-                                               
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="/images/home/recommend1.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend2.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="images/home/recommend3.jpg" alt="" />
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div><!--/recommended_items-->
+                    </div>*@
+                </div><!--/category-tab-->              
 
             </div>
         </div>
     </div>
 </section>
-
+@section scripts {
+    <script>
+        $(function () {
+            //alert("Hello!");
+            $(document).on("click", ".my-click-pay", function () {
+                //var my = $(this);
+                var productId = $(this).attr("data-product-name");
+                alert("Товар " + productId + " додано до кошика!");
+                return false;
+            });
+        });
+    </script>
+    
+    }
 
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("btnModal");
+var btn = document.getElementsByClassName("data-product-id");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];

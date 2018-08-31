@@ -167,5 +167,32 @@ namespace Diplom_WebSite_Taras.DAL.Entities
             HttpContext.Current.Session[CartSessionKey] = userName;
         }
 
+        public decimal CreateOrderLines(int orderId)
+        {
+            decimal orderTotal = 0;
+
+            var cartLines = GetCartLines();
+
+            foreach (var item in cartLines)
+            {
+                OrderLine orderLine = new OrderLine
+                {
+                    Product = item.Product,
+                    ProductId = item.ProductId,
+                    ProductName = item.Product.Name,
+                    Quantity = item.Quantity,
+                    UnitPrice = item.Product.Price,
+                    OrderId = orderId
+                };
+
+                orderTotal += (item.Quantity * item.Product.Price);
+                db.OrderLines.Add(orderLine);
+            }
+
+            db.SaveChanges();
+            EmptyCart();
+            return orderTotal;
+        }
+
     }
 }

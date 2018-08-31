@@ -1,7 +1,64 @@
 ﻿
 @{
     ViewBag.Title = "Адмін-панель";
-}
+}  
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">Панель Адміна</h1>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block"> <img src="~/images/admin/buy.png" alt="" /> <br /><h2>@Html.ActionLink("ЗАМОВЛЕННЯ КОРИСТУВАЧІВ", "Index", "Order", new { area = "Admin" }, null)</h2></button>
+                    <h1 class="page-subhead-line">Оберіть елемент для наповнення сайту:</h1>
+                    
+                </div>
+            </div>           
+            <!-- ROW  -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="main-box mb-dull">
+                        <img src="~/images/admin/product.png" alt="" /> <br/>
+                        <h3>@Html.ActionLink("Ввести продукти", "Index", "Product", new { area = "Admin" }, null)</h3>
+                            <i class="fa fa-bolt fa-5x"></i>      
+                        </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-box mb-dull">
+                        <img src="~/images/admin/producer.png" alt="" /> <br />
+                       <h3> @Html.ActionLink("Ввести виробників", "Index", "Producer", new { area = "Admin" }, null)</h3>
+                            <i class="fa fa-bolt fa-5x"></i>
+                                                 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-box mb-dull">
+                        <img src="~/images/admin/category.png" alt="" /> <br />
+                        <h3>@Html.ActionLink("Ввести категорії", "Index", "Category", new { area = "Admin" }, null)</h3>                          
+                                           
+                    </div>
+                </div>               
 
-<h2>Сторінка Адміна</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="main-box mb-pink">
+                             <img src="~/images/admin/adduser.png" alt="" /> <br />
+                            <h3>@Html.ActionLink("Додати користувача", "Create", "AdminUserRole", new { area = "" }, null)</h3>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-box mb-pink">
+                        <img src="~/images/admin/userandroles.png" alt="" /> <br />
+                        <h3>@Html.ActionLink("Користувачі та ролі", "Index", "AdminUserRole", new { area = "" }, null)</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-box mb-pink">
+                        <img src="~/images/admin/role.png" alt="" /> <br />
+                        <h3>@Html.ActionLink("Керувати ролями", "ViewAllRoles", "AdminUserRole", new { area = "" }, null)</h3>
+                    </div>
+                </div>
+                 </div>
+            <!-- /. ROW  -->   
+      
+<!-- /. WRAPPER  -->
 

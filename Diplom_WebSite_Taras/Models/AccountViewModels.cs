@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Diplom_WebSite_Taras.DAL.Entities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Diplom_WebSite_Taras.Models
@@ -29,11 +30,11 @@ namespace Diplom_WebSite_Taras.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "Код")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Запам'ятати на цьому браузері?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -55,10 +56,10 @@ namespace Diplom_WebSite_Taras.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запам'ятати?")]
         public bool RememberMe { get; set; }
     }
 
@@ -72,13 +73,30 @@ namespace Diplom_WebSite_Taras.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Підтвердіть пароль")]
+        [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Ім'я")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Прізвище")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Телефон")]
+        public string Phone { get; set; }
+
+        [Required]
+        [Display(Name = "Адреса")]
+        public string Address { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -91,12 +109,12 @@ namespace Diplom_WebSite_Taras.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Підтвердіть пароль")]
+        [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

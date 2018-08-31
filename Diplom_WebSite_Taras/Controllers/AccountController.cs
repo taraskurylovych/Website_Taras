@@ -56,15 +56,6 @@ namespace Diplom_WebSite_Taras.Controllers
             }
         }
 
-        //private void MigrateShoppingCart(string UserName)
-        //{
-        //    // Associate shopping cart items with logged-in user
-        //    var cart = ShoppingCart.GetCart(this.HttpContext);
-
-        //    cart.MigrateCart(UserName);
-        //    Session[ShoppingCart.CartSessionKey] = UserName;
-        //}
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -186,10 +177,25 @@ namespace Diplom_WebSite_Taras.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email,
+                    Email = model.Email };
+                user.UserProfile = new UserProfile
+                {
+                    FirstName=model.FirstName,
+                    LastName=model.LastName,
+                    Phone=model.Phone,
+                    Address=model.Address
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Temp code
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("User"));
+                    await UserManager.AddToRoleAsync(user.Id, "User");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     Cart cart = Cart.GetCart();
