@@ -54,11 +54,12 @@
 
 
 <br />
-Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
+<div class="text-center">
+    Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
+    @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-
+    </div>
 
 

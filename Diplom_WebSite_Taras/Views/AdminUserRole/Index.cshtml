@@ -52,9 +52,10 @@
 
 </table>
 <br />
-Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
+<div class="text-center">
+    Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
 
-@Html.PagedListPager(Model,
+    @Html.PagedListPager(Model,
     page => Url.Action("Index",
     new
     {
@@ -62,4 +63,5 @@
         searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
         currentFilter = ViewBag.CurrentFilter
     }))
-<hr />
+    <hr />
+    </div>

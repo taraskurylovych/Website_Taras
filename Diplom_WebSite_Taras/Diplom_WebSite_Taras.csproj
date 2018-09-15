@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -231,6 +232,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartSummaryViewModel.cs" />
     <Compile Include="Models\CartViewModel.cs" />
+    <Compile Include="Models\DBDiagram\ProjectDiagram.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectDiagram.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\HelperModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -345,12 +351,11 @@
     <Content Include="images\cart\two.png" />
     <Content Include="images\home\bezkoshtovna_dostavka.png" />
     <Content Include="images\home\bg_border.png" />
+    <Content Include="images\home\dostavka.jpg" />
     <Content Include="images\home\free-delivery.jpg" />
     <Content Include="images\home\gallery1.jpg" />
     <Content Include="images\home\gallery2.jpg" />
     <Content Include="images\home\gallery3.jpg" />
-    <Content Include="images\home\gallery4.jpg" />
-    <Content Include="images\home\girl1.jpg" />
     <Content Include="images\home\iframe1.png" />
     <Content Include="images\home\iframe2.png" />
     <Content Include="images\home\iframe3.png" />
@@ -443,6 +448,13 @@
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Review.cshtml" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="Models\DBDiagram\ProjectDiagram.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ProjectDiagram.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\Diplom.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\cropper\cropper.js" />
@@ -511,6 +523,10 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Home\OrderConfirm.cshtml" />
+    <Content Include="Views\Home\Dostavka.cshtml" />
+    <Content Include="Views\Home\Zamovlennya.cshtml" />
+    <Content Include="Views\Home\Obmin.cshtml" />
+    <Content Include="Views\Home\HowToReturn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -546,6 +562,12 @@
     <EmbeddedResource Include="Migrations\201808290934215_Add user orders.resx">
       <DependentUpon>201808290934215_Add user orders.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Models\DBDiagram\ProjectDiagram.dbml.layout">
+      <DependentUpon>ProjectDiagram.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

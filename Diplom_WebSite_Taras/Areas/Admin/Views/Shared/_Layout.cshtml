@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin-Panel</title>
+    <title>Панель Адміна</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -21,29 +21,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Мій інтернет-магазин", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Сторінка адміна", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Про нас", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Продукти", "Index", "Product", new { area = "Admin" }, null)</li>
-                    <li>@Html.ActionLink("Категорії", "Index", "Category", new { area = "Admin" }, null)</li>
-                    <li>@Html.ActionLink("Виробники", "Index", "Producer", new { area = "Admin" }, null)</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*@
+  
     <nav class="navbar navbar-default navbar-cls-top " >
                 
                 <div class="col-sm-4">
@@ -53,12 +31,14 @@
 
                 </div>
 
-                <div class="header-right">                  
-                    @Html.ActionLink("Сторінка адміна", "Index", "Home", new { @class = "btn btn-primary" })
+                <div class="header-right">  
+                  @if (User.IsInRole("Administrator"))
+                  {
+                    @Html.ActionLink("Сторінка адміністратора", "Index", "Home", new { area = "Admin" }, new { @class = "btn btn-primary" })
+                  }
                     @Html.ActionLink("Про нас", "About", "Home", new { area = "" }, new { @class = "btn btn-danger" })
                     @Html.ActionLink("Контакти", "Contact", "Home", new { area = "" }, new { @class = "btn btn-primary" })
-                    @Html.Partial("_LoginPartial", new { @class = "btn btn-success" })
-
+                    
                 </div>
     </nav>
 
@@ -88,51 +68,3 @@
 
 </body>
 </html>
-@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title | Пір'їнка</title>
-        @Styles.Render("~/Content/css")
-        @RenderSection("styles", required: false)
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Мій інтернет-магазин", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Сторінка адміна", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Про нас", "About", "Home")</li>
-                        <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Продукти", "Index", "Product", new { area = "Admin" }, null)</li>
-                        <li>@Html.ActionLink("Категорії", "Index", "Category", new { area = "Admin" }, null)</li>
-                        <li>@Html.ActionLink("Виробники", "Index", "Producer", new { area = "Admin" }, null)</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
-    </html>*@

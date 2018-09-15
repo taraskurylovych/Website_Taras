@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-1">
                         @Html.ActionLink("Видалити позицію", "RemoveLine", "Cart", new { id = Model.CartLines[i].Product.Id }, new { @class = "btn btn-danger" })
-                        @*@Html.ActionLink("Детально", "Details", new { id = item.OrderId }, new { @class = "btn btn-success" })*@
+                       
                     </div>
                 </div>
                 <hr />
@@ -70,8 +70,8 @@ else
         На жаль, Ваш кошик порожній, але Ви все ще можете @Html.ActionLink("вибрати собі необхідний товар для покупки.", "Index", "Home")
     </span>
 }
-<div>
-    @Html.ActionLink("Продовжити покупки", "Index", "Home")
+<div>   
+    @Html.ActionLink("Продовжити покупки", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
 </div>
 
 @section Scripts {

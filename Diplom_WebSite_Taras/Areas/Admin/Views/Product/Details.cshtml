@@ -71,6 +71,11 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Змінити", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Повернутися до списку продуктів", "Index")
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Змінити", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Повернутися до адмін-панелі", "Index", new { @class = "btn btn-success" })
+    }
+    @Html.ActionLink("Повернутися на головну", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+    
 </p>

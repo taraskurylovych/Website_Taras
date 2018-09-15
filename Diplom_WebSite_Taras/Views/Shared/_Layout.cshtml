@@ -54,12 +54,7 @@
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                @*<li>@Html.Action("Summary", "Cart")</li>*@
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>                                
+                                <li><p>Телефон для запитань: +38(067)621-95-39</p></li>                               
                             </ul>
                             
                         </div>
@@ -82,12 +77,12 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Мій профіль</a></li>                                                        
+                            <ul class="nav navbar-nav">                               
+                                                                                      
                                 <li>@Html.Action("Summary", "Cart")</li>
                                 
                             </ul>
-                            @*@Html.Action("Summary", "Cart")*@
+                            
                             @Html.Partial("_LoginPartial")
                         </div>
                     </div>
@@ -122,8 +117,8 @@
                                                     <i class="fa fa-play-circle-o"></i>
                                                 </div>
                                             </a>
-                                            <p>Circle of Hands</p>
-                                            <h2>24 DEC 2014</h2>
+                                            <h2>Великий вибір товарів.</h2>
+                                            <p>Постійне оновлення асортименту</p>
                                         </div>
                                     </div>
 
@@ -137,8 +132,8 @@
                                                     <i class="fa fa-play-circle-o"></i>
                                                 </div>
                                             </a>
-                                            <p>Circle of Hands</p>
-                                            <h2>24 DEC 2014</h2>
+                                            <h2>Швидка доставка поштою.</h2>
+                                            <p>Відправляємо в день замовлення.</p>
                                         </div>
                                     </div>
 
@@ -152,8 +147,8 @@
                                                     <i class="fa fa-play-circle-o"></i>
                                                 </div>
                                             </a>
-                                            <p>Circle of Hands</p>
-                                            <h2>24 DEC 2014</h2>
+                                            <h2>У нас завжди якісний товар.</h2>
+                                            <p>Вся продукція сертифікована.</p>
                                         </div>
                                     </div>
 
@@ -167,8 +162,8 @@
                                                     <i class="fa fa-play-circle-o"></i>
                                                 </div>
                                             </a>
-                                            <p>Circle of Hands</p>
-                                            <h2>24 DEC 2014</h2>
+                                            <h2>Повернення товару протягом 14 днів після покупки.</h2>
+                                            <p>Гарантія на товар від 1 року.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -187,37 +182,31 @@
                             <div class="row">
                                 <div class="col-sm-2">
                                     <div class="single-widget">
-                                        <h2>Service</h2>
+                                        <h2>Реєстрація</h2>                                        
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#">Online Help</a></li>
-                                            <li><a href="#">Contact Us</a></li>
-                                            <li><a href="#">Order Status</a></li>
-                                            <li><a href="#">Change Location</a></li>
-                                            <li><a href="#">FAQ’s</a></li>
+                                            <li>@Html.ActionLink("Зареєтруватися", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                            <li>@Html.ActionLink("Увійти", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>                                         
+                                            
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="single-widget">
-                                        <h2>Quock Shop</h2>
+                                        <h2>Умови замовлення і доставки</h2>
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#">T-Shirt</a></li>
-                                            <li><a href="#">Mens</a></li>
-                                            <li><a href="#">Womens</a></li>
-                                            <li><a href="#">Gift Cards</a></li>
-                                            <li><a href="#">Shoes</a></li>
+                                            <li>@Html.ActionLink("Доставка і оплата", "Dostavka", "Home", new { area = "" })</li>
+                                            <li>@Html.ActionLink("Як замовити товар", "Zamovlennya", "Home", new { area = "" })</li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="single-widget">
-                                        <h2>Policies</h2>
+                                        <h2>Гарантійні зобов'язання</h2>
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#">Terms of Use</a></li>
-                                            <li><a href="#">Privecy Policy</a></li>
-                                            <li><a href="#">Refund Policy</a></li>
-                                            <li><a href="#">Billing System</a></li>
-                                            <li><a href="#">Ticket System</a></li>
+                                            <li>@Html.ActionLink("Умови обміну, чи повернення товару", "Obmin", "Home", new { area = "" })</li>
+                                            <li>@Html.ActionLink("Як обміняти, чи поміняти товар", "HowToReturn", "Home", new { area = "" })</li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -225,22 +214,16 @@
                                     <div class="single-widget">
                                         <h2>Про магазин:</h2>
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#">Company Information</a></li>
-                                            <li><a href="#">Careers</a></li>
-                                            <li><a href="#">Store Location</a></li>
-                                            <li><a href="#">Affillate Program</a></li>
-                                            <li><a href="#">Copyright</a></li>
+                                            <li>@Html.ActionLink("Про нас", "About", "Home")</li>
+                                            <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-sm-offset-1">
                                     <div class="single-widget">
                                         <h2>Про наш магазин:</h2>
-                                        @*<form action="#" class="searchform">
-                                            <input type="text" placeholder="Your email address" />
-                                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                            <p>Get the most recent updates from <br />our site and be updated your self...</p>
-                                        </form>*@
+                                       <h4>Ми - це невеличкий затишний магазин постелі і супутніх товарів.</h4>
                                     </div>
                                 </div>
 

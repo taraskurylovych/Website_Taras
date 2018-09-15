@@ -39,11 +39,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
             ViewBag.CurrentFilter = search;
 
             List<ProductItemViewModel> model =
-                query
-
-                 //query.Products
-                 //.Include(c => c.Category)
-                 //.Include(pr => pr.Producer)
+                query                
                  .Select(p => new ProductItemViewModel
                  {
                      Id = p.Id,
@@ -56,7 +52,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
                      Image = p.Image
 
                  }).ToList();
-          return View(model.ToList().ToPagedList(page ?? 1, 8));           
+          return View(model.ToList().ToPagedList(page ?? 1, 7));           
         }
         
         [HttpGet]

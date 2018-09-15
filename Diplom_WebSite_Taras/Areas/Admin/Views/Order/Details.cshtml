@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-8">@Html.DisplayFor(pn => item.ProductName)</div>
         <div class="col-md-2">@Html.DisplayFor(q => item.Quantity)</div>
-        <div class="col-md-2">@Html.DisplayFor(up => item.UnitPrice)</div>
+        <div class="col-md-2">@Html.DisplayFor(up => item.UnitPrice)</div>       
     </div>
 }
 <hr />
@@ -44,15 +44,7 @@
         <dd>
             @Html.DisplayFor(model => model.OrderId)
         </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>*@
-
-        @*<dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>*@
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.DeliveryName)
         </dt>
@@ -60,15 +52,7 @@
         <dd>
             @Html.DisplayFor(model => model.DeliveryName)
         </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.DeliveryAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryAddress)
-        </dd>*@
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.TotalPrice)
         </dt>
@@ -87,6 +71,9 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Повернутися назад", "Index")
-</p>
+
+@if (User.IsInRole("Administrator"))
+{
+    @Html.ActionLink("Повернутися на адмін-панель", "Index", "Home", new {area = "Admin"}, new { @class = "btn btn-success"})
+}
+   @Html.ActionLink("Повернутися на головну", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })

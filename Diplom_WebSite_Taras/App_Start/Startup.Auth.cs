@@ -20,6 +20,9 @@ namespace Diplom_WebSite_Taras
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            
+
+
             // Add Role Manager
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 

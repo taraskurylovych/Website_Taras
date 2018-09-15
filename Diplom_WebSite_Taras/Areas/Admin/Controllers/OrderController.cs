@@ -35,7 +35,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Order
-        // GET: Orders
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string orderSearch, string startDate, string endDate, string orderSortOrder, int? page)
         {
             var orders = db.Orders
@@ -52,12 +52,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
             {
                 orders = orders.Where(o => o.OrderId.ToString().Equals(orderSearch) ||
                  o.UserId.Contains(orderSearch) ||
-                 o.DeliveryName.Contains(orderSearch) ||
-                 //o.DeliveryAddress.AddressLine1.Contains(orderSearch) ||
-                 //o.DeliveryAddress.AddressLine2.Contains(orderSearch) ||
-                 //o.DeliveryAddress.Town.Contains(orderSearch) ||
-                 //o.DeliveryAddress.County.Contains(orderSearch) ||
-                 //o.DeliveryAddress.Postcode.Contains(orderSearch) ||
+                 o.DeliveryName.Contains(orderSearch) ||                 
                  o.TotalPrice.ToString().Equals(orderSearch) ||
                  o.OrderLines.Any(ol => ol.ProductName.Contains(orderSearch)));
             }
@@ -108,6 +103,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Order/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -133,6 +129,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Orders/Review
+        //[Authorize(Roles = "Administrator, User")]
         public async Task<ActionResult> Review()
         {
             Cart cart = Cart.GetCart();
@@ -141,8 +138,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
             order.UserId = User.Identity.Name;
             ApplicationUser user = await UserManager.FindByNameAsync(order.UserId);
             order.DeliveryName = user.Email;
-           order.UserId = user.Id;
-            //order.DeliveryAddress = user.Address;
+           order.UserId = user.Id;            
             order.OrderLines = new List<OrderLine>();
             foreach (var cartLine in cart.GetCartLines())
             {
@@ -164,6 +160,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        //[Authorize(Roles = "Administrator, User")]        
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,DeliveryName")] Order order)
         {
@@ -183,6 +180,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Order/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -214,6 +212,7 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Controllers
         }
 
         // GET: Admin/Order/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

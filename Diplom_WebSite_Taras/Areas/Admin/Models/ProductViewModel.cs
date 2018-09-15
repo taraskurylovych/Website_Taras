@@ -14,9 +14,9 @@ namespace Diplom_WebSite_Taras.Areas.Admin.Models
         public int Id { get; set; }
         [Required, Display (Name = "Назва продукту")]
         public string Name { get; set; }
-        [Required, Display(Name = "Кількість")]
-        public decimal Price { get; set; }
         [Required, Display(Name = "Ціна")]
+        public decimal Price { get; set; }
+        [Required, Display(Name = "Кількість")]
         public double Quantity { get; set; }
         [Display(Name = "Опис продукту")]
         public string Description { get; set; }

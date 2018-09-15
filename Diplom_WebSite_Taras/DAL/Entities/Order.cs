@@ -16,9 +16,7 @@ namespace Diplom_WebSite_Taras.DAL.Entities
         [Display(Name = "Id Користувача"), ForeignKey("ApplicationUserOf")]
         public string UserId { get; set; }
         [Display(Name = "Отримувач")]
-        public string DeliveryName { get; set; }
-        //[Display(Name = "Delivery Address")]
-        //public Address DeliveryAddress { get; set; }
+        public string DeliveryName { get; set; }        
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:c}")]
         [Display(Name = "Загальна сума")]

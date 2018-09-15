@@ -36,10 +36,7 @@ namespace Diplom_WebSite_Taras.Controllers
             ViewBag.CurrentFilter = search;
             
             List<ProductItemViewModel> model =
-                 query
-                 //.Include(c => c.Category)
-                 //.Include(pr => pr.Producer)
-                 .Select(p => new ProductItemViewModel
+                 query.Select(p => new ProductItemViewModel
                  {
                      Id = p.Id,
                      Name = p.Name,
@@ -50,11 +47,7 @@ namespace Diplom_WebSite_Taras.Controllers
                      ProducerName = p.Producer.Name,
                      Image = p.Image
 
-                 }).ToList();
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    products = products.Where(s => s.Name.Contains(searchString));
-            //}
+                 }).ToList();           
             return View(model.ToList().ToPagedList(page ?? 1, 6));
 
         }
@@ -109,6 +102,34 @@ namespace Diplom_WebSite_Taras.Controllers
         public ActionResult Oplata()
         {
             ViewBag.Message = "Оплати товар частинами";
+
+            return View();
+        }
+
+        public ActionResult Dostavka()
+        {
+            ViewBag.Message = "Інформація про доставку і оплату товару";
+
+            return View();
+        }
+
+        public ActionResult Zamovlennya()
+        {
+            ViewBag.Message = "Як замовити товар";
+
+            return View();
+        }
+
+        public ActionResult Obmin()
+        {
+            ViewBag.Message = "Умови повернення, чи заміни товару";
+            
+            return View();
+        }
+
+        public ActionResult HowToReturn()
+        {
+            ViewBag.Message = "Як повернути, чи обміняти товар";
 
             return View();
         }

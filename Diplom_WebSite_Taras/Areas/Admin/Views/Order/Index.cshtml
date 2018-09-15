@@ -13,7 +13,7 @@
 {
     <div class="row form-group">
         <div class="col-md-2">
-            <label>Пошук замовлень по Id, або по тексту:</label>
+            <label>Пошук замовлень по Email користувача:</label>
         </div>
         <div class="col-md-3">
             @Html.TextBox("OrderSearch", null, new { @class = "form-control", @placeholder = "Пошук замовлень" })
@@ -113,13 +113,15 @@
             </td>
             <td>                
                 @Html.ActionLink("Детально", "Details", new { id = item.OrderId }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Видалити", "Delete", new { id = item.OrderId }, new { @class = "btn btn-danger" })
-            </td>
+                @Html.ActionLink("Видалити", "Delete", new { id = item.OrderId }, new { @class = "btn btn-danger" })                               
+             </td>
         </tr>
     }
 
 </table>
 <br />
+
+<div class="text-center">
 Сторінка @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) із @Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-
+</div>
